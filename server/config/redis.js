@@ -1,0 +1,27 @@
+import redis from 'redis';
+import env from './env';
+
+const {
+  REDIS_HOST: host,
+  REDIS_PORT: port,
+  REDIS_PASSWORD: password,
+  REDIS_URL: url
+} = env;
+
+const client = url
+  ? redis.createClient({
+      port,
+      host,
+      password
+    })
+  : redis.createClient(url);
+
+client.on('connect', () => {
+  console.log('Redis client connected');
+});
+
+client.on('error', (err) => {
+  console.log(`Something went wrong:  ${err}`);
+});
+
+export default client;
