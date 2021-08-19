@@ -1,11 +1,8 @@
-import express from 'express';
 import winston from 'winston';
-import morgan from 'morgan';
 import appRoot from 'app-root-path';
+import env from './config/env';
 
-const app = express();
-
-app.use(morgan('combined'));
+const { NODE_ENV } = env;
 
 const options = {
   file: {
@@ -15,17 +12,20 @@ const options = {
     json: true,
     maxsize: 5242880,
     maxFiles: 15,
-    colorize: false
+    colorize: true
   },
   console: {
-    level: 'debug',
+    level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
     handleExceptions: true,
     json: false,
     colorize: true
   }
 };
 
-const logger = winston.createLogger({
+/**
+ * Set the winston transports
+ */
+export default logger = winston.createLogger({
   transports: [
     new winston.transports.File(options.file),
     new winston.transports.Console(options.console)
@@ -33,10 +33,8 @@ const logger = winston.createLogger({
   exitOnError: false
 });
 
-const stream = {
+export const stream = {
   write: (message) => {
     logger.info(message);
   }
 };
-
-export default stream;
