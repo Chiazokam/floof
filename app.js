@@ -12,6 +12,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json()) 
 
 app.use('/api/v1', router);
+
 app.listen(env.PORT, () => {
   console.log(
     `⚡️[server]: Server is running at https://localhost:${env.PORT}`
