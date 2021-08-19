@@ -25,7 +25,7 @@ const options = {
 /**
  * Set the winston transports
  */
-export default logger = winston.createLogger({
+const logger = winston.createLogger({
   transports: [
     new winston.transports.File(options.file),
     new winston.transports.Console(options.console)
@@ -38,3 +38,5 @@ export const stream = {
     logger.info(message);
   }
 };
+
+export default logger;
