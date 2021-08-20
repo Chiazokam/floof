@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const env = require('../../../config/env');
 
 module.exports = {
