@@ -1,8 +1,7 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
+const env = require('../../../config/env');
 
 dotenv.config();
-
-const env = require('../../../config/env');
 
 module.exports = {
   development: {
