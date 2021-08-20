@@ -9,12 +9,11 @@ const {
 } = env;
 
 const client = url
-  ? redis.createClient({
+  ? redis.createClient(url) : redis.createClient({
     port,
     host,
     password,
-  })
-  : redis.createClient(url);
+  });
 
 client.on('connect', () => {
   console.log('Redis client connected');
