@@ -5,15 +5,15 @@ const {
   REDIS_HOST: host,
   REDIS_PORT: port,
   REDIS_PASSWORD: password,
-  REDIS_URL: url
+  REDIS_URL: url,
 } = env;
 
 const client = url
   ? redis.createClient({
-      port,
-      host,
-      password
-    })
+    port,
+    host,
+    password,
+  })
   : redis.createClient(url);
 
 client.on('connect', () => {

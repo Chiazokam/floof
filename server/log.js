@@ -12,14 +12,14 @@ const options = {
     json: true,
     maxsize: 5242880,
     maxFiles: 15,
-    colorize: true
+    colorize: true,
   },
   console: {
     level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
     handleExceptions: true,
     json: false,
-    colorize: true
-  }
+    colorize: true,
+  },
 };
 
 /**
@@ -28,15 +28,15 @@ const options = {
 const logger = winston.createLogger({
   transports: [
     new winston.transports.File(options.file),
-    new winston.transports.Console(options.console)
+    new winston.transports.Console(options.console),
   ],
-  exitOnError: false
+  exitOnError: false,
 });
 
 export const stream = {
   write: (message) => {
     logger.info(message);
-  }
+  },
 };
 
 export default logger;

@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = (sequelize, DataTypes) => {
   const Bank = sequelize.define('Bank', {
     id: {
@@ -7,25 +5,25 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       unique: true,
-      allowNull: false
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
     },
     logo: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     createdAt: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     updatedAt: {
       allowNull: false,
-      type: DataTypes.DATE
-    }
+      type: DataTypes.DATE,
+    },
   });
 
   return Bank;
