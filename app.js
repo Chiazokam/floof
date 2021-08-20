@@ -2,8 +2,10 @@ import express from 'express';
 import morgan from 'morgan';
 
 import winston from './server/log';
-// import env from './server/config/env';
+import env from './server/config/env';
 import router from './server/routes';
+
+const { PORT } = env;
 
 const app = express();
 app.use(morgan('combined', { stream: winston }));
@@ -13,9 +15,9 @@ app.use(express.json());
 
 app.use('/api/v1', router);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const APP_PORT = PORT || 3000;
+app.listen(APP_PORT, () => {
   console.log(
-    `⚡️[server]: Server is running on port ${PORT}`,
+    `⚡️[server]: Server is running on port ${APP_PORT}`,
   );
 });
