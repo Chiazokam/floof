@@ -16,8 +16,10 @@ app.use(morgan('combined', { stream: winston }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/api/v1', router);
-
+// app.use('/api/v1', router);
+app.use('./api/v1', (req, res) => {
+  res.status(200).json({ message: 'Welcome to Floof' });
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(
