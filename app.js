@@ -1,14 +1,11 @@
 import express from 'express';
 import morgan from 'morgan';
 
-import dotenv from 'dotenv';
 import winston from './server/log';
 import env from './server/config/env';
 import router from './server/routes';
 
-dotenv.config();
-
-// const { PORT } = env;
+const { PORT } = env;
 
 const app = express();
 app.use(morgan('combined', { stream: winston }));
@@ -16,13 +13,11 @@ app.use(morgan('combined', { stream: winston }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use('/api/v1', router);
-app.use('./api/v1', (req, res) => {
-  res.status(200).json({ message: 'Welcome to Floof' });
-});
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.use('/api/v1', router);
+
+const APP_PORT = PORT || 3000;
+app.listen(APP_PORT, () => {
   console.log(
-    `⚡️[server]: Server is running on port ${PORT}`,
+    `⚡️[server]: Server is running on port ${APP_PORT}`,
   );
 });
