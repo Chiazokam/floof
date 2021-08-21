@@ -9,8 +9,8 @@ const config = require(`${__dirname}/../config/config.js`)[env];
 const db = {};
 
 let sequelize;
-if (config.url) {
-  sequelize = new Sequelize(process.env[config.url], config);
+if (process.env.NODE_ENV === 'production') {
+  sequelize = new Sequelize(process.env.DATABASE_URL, config);
 } else {
   sequelize = new Sequelize(
     config.database,
