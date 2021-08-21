@@ -2,7 +2,10 @@ const env = require('../../../config/env');
 
 module.exports = {
   development: {
-    url: env.DATABASE_URL,
+    username: env.DB_USERNAME,
+    password: env.DB_PASSWORD,
+    database: env.DB_DEV,
+    host: env.DB_HOST,
     dialect: 'postgres',
   },
   production: {
