@@ -13,7 +13,7 @@
     "remove:build": "rm -rf ./build",
     "build": "npm run remove:build && babel app.js -d build && babel server -d build/server",
     "start": "node build/app.js",
-    "heroku-postbuild": "npm run build && npm run run:db && npm run seed"
+    "heroku-postbuild": "npm run build"
   },
   "author": "zokky",
   "license": "ISC",
