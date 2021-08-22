@@ -15,7 +15,7 @@ const options = {
     colorize: true,
   },
   console: {
-    level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
+    level: NODE_ENV === 'production' ? 'error' : 'debug',
     handleExceptions: true,
     json: false,
     colorize: true,
