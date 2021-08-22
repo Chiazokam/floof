@@ -13,12 +13,14 @@
     "remove:build": "rm -rf ./build",
     "build": "npm run remove:build && babel app.js -d build && babel server -d build/server",
     "start": "node build/app.js",
-    "heroku-postbuild": "npm run build && npm run run:db"
+    "heroku-postbuild": "npm run build && npm run run:db && npm run seed"
   },
   "author": "zokky",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.15.3",
     "app-root-path": "^3.0.0",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -34,6 +36,7 @@
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
